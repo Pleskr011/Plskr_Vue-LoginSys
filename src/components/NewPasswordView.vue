@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import router from '@/router'
+import { BACKEND_URL } from '@/handy'
 
 const props = defineProps({
   email: String,
@@ -18,7 +19,7 @@ const newPass = async () => {
     console.log('correito: ', props.email)
     try {
       const response = await axios.post(
-        'http://localhost:8000/sec/api/recovery/reset/',
+        BACKEND_URL + '/sec/api/recovery/reset/',
         {
           email: props.email,
           password: password.value,

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import QrcodeVue from 'qrcode.vue'
+import { BACKEND_URL } from '@/handy'
 
 const first_name = ref('')
 const last_name = ref('')
@@ -13,7 +14,7 @@ const qr = ref('')
 
 const getUserData = async () => {
   try {
-    const response = await axios.get('http://localhost:8000/sec/api/user/', {
+    const response = await axios.get(BACKEND_URL + '/sec/api/user/', {
       withCredentials: true,
     })
     console.log(response.data)
@@ -28,7 +29,7 @@ const getUserData = async () => {
 const activateMFA = async () => {
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/mfa/activate/',
+      BACKEND_URL + '/sec/api/mfa/activate/',
       {},
       {
         headers: {
@@ -51,7 +52,7 @@ const activateMFA = async () => {
 const verifyMFA = async () => {
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/mfa/activate/check/',
+      BACKEND_URL + '/sec/api/mfa/activate/check/',
       {
         mfa_code: codeMFA.value,
       },
@@ -76,7 +77,7 @@ getUserData()
 
 <template>
   <h1>Welcome, you're logged in. Yey!!!</h1>
-  <!-- Mostrar nombre completo del usuario logueado -->
+  <!-- Show full name of logged user -->
   <h2>Full name: {{ first_name }} {{ last_name }}</h2>
   <button
     v-if="!isMFA"

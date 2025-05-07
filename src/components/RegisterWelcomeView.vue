@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import { BACKEND_URL } from '@/handy'
 
 const router = useRouter()
 
@@ -18,7 +19,7 @@ const registerUser = async () => {
     //const csrfToken = document.cookie.match(/csrftoken=([^\s]*)/)[1]
     //console.log('csrfToken = ', csrfToken)
     const response = await axios.post(
-      'http://localhost:8000/sec/api/register/',
+      BACKEND_URL + '/sec/api/register/',
       {
         email: email.value,
         first_name: name.value,

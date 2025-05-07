@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import EventBus from '@/EventBus'
 import axios from 'axios'
+import { BACKEND_URL } from '@/handy'
 
 const email = ref('')
 const password = ref('')
@@ -14,7 +15,7 @@ const loginUser = async () => {
   //send data to backend
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/auth/',
+      BACKEND_URL + '/sec/api/auth/',
       {
         email: email.value,
         password: password.value,

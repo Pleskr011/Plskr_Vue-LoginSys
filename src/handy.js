@@ -12,6 +12,10 @@ export const isLogged = async () => {
       return false
     }
   } catch (error) {
-    console.error(error)
+    //console.error(error)
   }
 }
+//For Docker: (this needs a better solution)
+//export const BACKEND_URL = window.location.origin
+//For local development:
+export const BACKEND_URL = 'http://localhost:8000'

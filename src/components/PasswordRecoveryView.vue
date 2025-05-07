@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import EventBus from '@/EventBus'
 import axios from 'axios'
+import { BACKEND_URL } from '@/handy'
 
 const email = ref('')
 const emit = defineEmits(['state'])
@@ -9,7 +10,7 @@ const recoveryPass = async () => {
   console.log(email.value)
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/recovery/',
+      BACKEND_URL + '/sec/api/recovery/',
       {
         email: email.value,
       },

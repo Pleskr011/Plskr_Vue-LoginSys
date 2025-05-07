@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import { isLogged } from '@/handy'
+import { isLogged, BACKEND_URL } from '@/handy'
 import axios from 'axios'
 import router from '@/router'
 import EventBus from '@/EventBus'
@@ -21,7 +21,7 @@ isLogged().then((response) => {
 const logout = async () => {
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/logout/',
+      BACKEND_URL + '/sec/api/logout/',
       {},
       {
         headers: {

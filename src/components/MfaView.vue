@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import EventBus from '@/EventBus'
 import axios from 'axios'
 import router from '@/router'
+import { BACKEND_URL } from '@/handy'
 
 const emit = defineEmits(['login'])
 const codeMFA = ref(['', '', '', '', '', ''])
@@ -48,7 +49,7 @@ const verifyMFA = async () => {
   console.log(codeMFA.value)
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/login/',
+      BACKEND_URL + '/sec/api/login/',
       {
         mfa_code: codeMFA.value.join(''),
         email: mail.value,

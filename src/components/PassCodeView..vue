@@ -2,6 +2,7 @@
 import EventBus from '@/EventBus'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
+import { BACKEND_URL } from '@/handy'
 
 const code = ref('')
 const email = ref('')
@@ -18,7 +19,7 @@ const submitCode = async () => {
   console.log(code.value)
   try {
     const response = await axios.post(
-      'http://localhost:8000/sec/api/recovery/check/',
+      BACKEND_URL + '/sec/api/recovery/check/',
       {
         email: email.value,
         code: code.value,
@@ -43,7 +44,6 @@ const submitCode = async () => {
 
 //const recoveryPass = () => {
 // console.log(email.value)
-//console.log('Enviado de nuevo jeje')
 //}
 </script>
 

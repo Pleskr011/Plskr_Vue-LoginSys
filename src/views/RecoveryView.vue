@@ -11,7 +11,6 @@ const recoveryEmail = ref('none')
 
 <template>
   <NewPasswordView v-if="codeReceived === 'received'" :email="recoveryEmail" />
-  <!--Acceder a esta vistadespues de autenticar con la clave anteriormente ingresada para mayor seguridad-->
   <PassCodeView
     v-show="codeReceived === 'sent'"
     @state="(status) => ((codeReceived = status.codeReceived), (recoveryEmail = status.email))"
